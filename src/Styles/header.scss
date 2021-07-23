@@ -1,0 +1,38 @@
+header {
+  position: fixed;
+  padding: 10px 0;
+  width: 100%;
+  background-color: #a5d6a7;
+}
+.header_inner {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+  padding: 0 1em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  a {
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 5px;
+    &:hover {
+      color: #37474f;
+    }
+  }
+}
+.menu {
+  a {
+    color: #37474f;
+    text-decoration: none;
+    &:hover {
+      color: green;
+    }
+    & + a {
+      margin-left: 1em;
+    }
+  }
+}

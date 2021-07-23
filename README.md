@@ -14,11 +14,15 @@
 ## Tasks
 
     [x] React, Redux, Typescript Setup
-    [ ] Add SASS,
-    [ ] Show All Books
-    [ ] Dummy List
-    [ ] Add to Reading List
-    [ ] Remove from Reading List
-    [ ] Add To Done List
-    [ ] Show Book Details
+    [x] Add SASS,
+    [x] Show All Books
+    [x] Dummy List
+    [x] Add to Reading List
+    [x] Remove from Reading List
+    [x] Add To Done List
+    [x] Show Book Details
     [ ] Review Books
+    [x] Fix action buttons style
+    [x] Show Done List
+    [ ] Save state to local storage
+    [ ] Get and Save username

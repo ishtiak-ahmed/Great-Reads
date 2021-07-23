@@ -1,24 +1,47 @@
-import { ActionType, Books } from "../../type";
-import { ADD_TO_READING_LIST, REMOVE_FROM_READING_LIST } from "../Actions/bookActions";
-const books: Books = {
- all: [
-    {name: 'HP 1', id: 1, author: 'J. k. Rowling', rating: 4.9, description: 'This is the first book of Harry Potter'},
-    {name: 'HP 2', id: 2, author: 'J. k. Rowling', rating: 4.9, description: 'This is the first book of Harry Potter'},
-    {name: 'HP 3', id: 3, author: 'J. k. Rowling', rating: 4.9, description: 'This is the first book of Harry Potter'},
-],
-readingList: [],
-done: []
-}
+import { BookAction, Books, IBook } from "../../interfaces";
+import {
+  ADD_TO_COMPLETED_LIST,
+  ADD_TO_READING_LIST,
+  LOAD_LOCAL_DATA,
+  REMOVE_FROM_READING_LIST,
+} from "../Actions/bookActions";
+import data from "../FakeData/data";
 
-const bookReducers = (state = books, action: ActionType) => {
-    switch(action.type){
-        case ADD_TO_READING_LIST:
-            return state;
-        case REMOVE_FROM_READING_LIST:
-            return state;
-        default:
-            return state;
-    }
-}
+const books: Books = {
+  all: data,
+};
+
+const bookReducers = (state = books, action: BookAction) => {
+  switch (action.type) {
+    case LOAD_LOCAL_DATA:
+      return action.payload;
+    case ADD_TO_READING_LIST:
+      const newList = state.all.map((book) => {
+        if (book.id === action.id) {
+          return { ...book, status: "readList" };
+        }
+        return book;
+      });
+      return { ...state, all: newList };
+    case REMOVE_FROM_READING_LIST:
+      const updated = state.all.map((book) => {
+        if (book.id === action.id) {
+          return { ...book, status: "allList" };
+        }
+        return book;
+      });
+      return { ...state, all: updated };
+    case ADD_TO_COMPLETED_LIST:
+      const updateList = state.all.map((book) => {
+        if (book.id === action.id) {
+          return { ...book, status: "done" };
+        }
+        return book;
+      });
+      return { ...state, all: updateList };
+    default:
+      return state;
+  }
+};
 
 export default bookReducers;
