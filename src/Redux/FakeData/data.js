@@ -11,7 +11,7 @@ const books = [
     Though Harry's first year at Hogwarts is the best of his life, not everything is perfect. There is a dangerous secret object hidden within the castle walls, and Harry believes it's his responsibility to prevent it from falling into evil hands. But doing so will bring him into contact with forces more terrifying than he ever could have imagined.
     
     Full of sympathetic characters, wildly imaginative situations, and countless exciting details, the first installment in the series assembles an unforgettable magical world and sets the stage for many high-stakes adventures to come.`,
-    genre: "Thriller",
+    genre: "Fantasy, Young Adult",
     image:
       "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1474154022l/3._SY475_.jpg",
     status: "allList",
@@ -39,7 +39,7 @@ const books = [
     Now he has escaped, leaving only two clues as to where he might be headed: Harry Potter's defeat of You-Know-Who was Black's downfall as well. And the Azkaban guards heard Black muttering in his sleep, "He's at Hogwarts . . . he's at Hogwarts."
     
     Harry Potter isn't safe, not even within the walls of his magical school, surrounded by his friends. Because on top of it all, there may well be a traitor in their midst.`,
-    genre: "Thriller",
+    genre: "Fantasy, Young Adult",
     image:
       "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1499277281l/5.jpg",
     status: "allList",
