@@ -58,7 +58,7 @@ const books = [
     status: "allList",
   },
   {
-    name: "Harry Potter and the Goblet of Fire",
+    name: "Harry Potter and the Order Of The Phoenix",
     id: 9,
     author: "J. K. Rowling",
     rating: [4.5],
