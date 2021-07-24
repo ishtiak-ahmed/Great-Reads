@@ -59,7 +59,7 @@ main {
   cursor: pointer;
   border-radius: 10px;
   border: 0.5px solid lightgray;
-  height: 260px;
+  min-height: 250px;
   transition: all ease-in-out 0.5s;
   &_cover {
     overflow: hidden;
@@ -121,6 +121,11 @@ main {
   }
 }
 
+.btns {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+}
 .add_btn {
   background-color: $warm-green;
   border: 1px solid $warm-green;
@@ -132,7 +137,6 @@ main {
   color: #fff;
 }
 .remove_btn {
-  margin-left: 1em;
   background-color: $warm-red;
   color: #fff;
   border: 1px solid $warm-red;
@@ -180,4 +184,28 @@ main {
 footer {
   text-align: center;
   padding-bottom: 1em;
+}
+
+// Responsive Rule
+
+@media (max-width: 960px) {
+  .reading_list,
+  .completed_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .book_details {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+
+  .logo a {
+    font-size: 0.9em;
+  }
+  .menu a {
+    font-size: 0.9em;
+  }
 }
