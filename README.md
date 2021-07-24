@@ -2,6 +2,12 @@
 
 ### A webapp for book reader build with React, Redux, Typescript and SASS
 
+![image](https://user-images.githubusercontent.com/57805696/126860513-5e9e0d29-7afe-4e8a-a16e-29c1017c5d58.png)
+![image](https://user-images.githubusercontent.com/57805696/126860524-91399f9e-6194-4ace-b42f-60edc221401b.png)
+![image](https://user-images.githubusercontent.com/57805696/126860535-603dda1a-9ee1-421c-afc3-74357113ebe9.png)
+
+
+
 ## Key Feature
 
     * Set Your name
