@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -9,6 +9,7 @@ import { RootState } from "../../interfaces";
 //   htmlparser2,
 // } from "react-html-parser";
 import {
+  addRating,
   addToCompletedList,
   addToReadingList,
   removeFromReadingList,
@@ -24,11 +25,12 @@ export default function BookDetails() {
   const bookState = useSelector((state: RootState) => state.books);
 
   const book = bookState.all.find((book) => book.id === +id)!;
-  console.log(book.description);
+  const rating = book.rating.reduce((s, r) => s + r, 0) / book.rating.length;
   const [listType, setListType] = useState(book.status);
   const handleAdd = () => {
     dispatch(addToReadingList(book.id));
     setListType("readList");
+    localStorage.setItem("data", JSON.stringify(bookState));
   };
   const handleRemove = () => {
     dispatch(removeFromReadingList(book.id));
@@ -38,6 +40,14 @@ export default function BookDetails() {
     dispatch(addToCompletedList(book.id));
     setListType("done");
   };
+
+  const handleRating = (e: Event | any) => {
+    const newRating = +e.target.value;
+    dispatch(addRating(book.id, newRating));
+  };
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(bookState));
+  }, [dispatch, bookState]);
   return (
     <main className="book_details">
       <div className="cover">
@@ -53,7 +63,7 @@ export default function BookDetails() {
         </p>
         {parse(`<div>${book.description}</div>`)}
         <p>
-          <strong>Rating:</strong> {book.rating}
+          <strong>Rating:</strong> {rating}
         </p>
         <div className="btns">
           {listType === "allList" ? (
@@ -72,7 +82,12 @@ export default function BookDetails() {
           ) : (
             <span>
               Rate This Book:{" "}
-              <select name="rating" id="" defaultValue="1">
+              <select
+                onChange={handleRating}
+                name="rating"
+                id=""
+                defaultValue="1"
+              >
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

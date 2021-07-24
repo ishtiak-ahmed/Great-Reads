@@ -9,7 +9,7 @@ export interface IBook {
   name: string;
   author: string;
   genre: string;
-  rating: number;
+  rating: number[];
   description: string;
   image: string;
   status: string;

@@ -8,6 +8,17 @@
   color: $blue-gray;
 }
 
+// Hide Scrollbar
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 p {
   line-height: 1.4em;
 }
@@ -125,6 +136,45 @@ main {
   background-color: $warm-red;
   color: #fff;
   border: 1px solid $warm-red;
+}
+
+// Dashboard Style
+.dashboard {
+  text-align: center;
+  p {
+    font-size: 1.2em;
+  }
+}
+
+.done_book {
+  color: $warm-blue;
+}
+
+.read_book {
+  color: $warm-green;
+}
+
+.warning {
+  color: $warm-red;
+  margin-top: 1em;
+}
+
+.logout_btn {
+  padding: 5px 1em;
+  border: 1px solid $warm-red;
+  background-color: $warm-red;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-top: 1em;
+}
+
+.about_info {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 5em;
+  border: 2px solid $warm-green;
+  padding: 1em;
 }
 
 footer {

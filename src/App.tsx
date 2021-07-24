@@ -7,40 +7,44 @@ import BookDetails from "./Components/Pages/BookDetails";
 import CompletedList from "./Components/Pages/CompletedList";
 import Footer from "./Components/Footer";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loadLocalData } from "./Redux/Actions/bookActions";
+import { loadUser } from "./Redux/Actions/userActions";
+import { RootState } from "./interfaces";
+import Dashboard from "./Components/Pages/Dashboard";
 
 function App() {
   const dispatch = useDispatch();
+  const bookState = useSelector((state: RootState) => state.books);
+  // Set user name and save to localstorage
   useEffect(() => {
-    // const data = localStorage.getItem("data");
-    // console.log(JSON.parse(data));
-    // const saveData = localStorage.getItem('books');
-    // if(saveData){
-    //   dispatch(loadLocalData(saveData))
-    // }
+    if (localStorage.getItem("name")) {
+      const name: string = localStorage.getItem("name")!;
+      dispatch(loadUser({ id: name, name, email: `${name}@g.com` }));
+    } else {
+      let name: string = prompt("Please enter your name..")!;
+      while (!name) {
+        name = prompt("Please enter your name..")!;
+      }
+      localStorage.setItem("name", name);
+      dispatch(loadUser({ id: name, name, email: `${name}@g.com` }));
+    }
+    const data = localStorage.getItem("data");
+    if (data) {
+      dispatch(loadLocalData(JSON.parse(data)));
+    } else {
+      localStorage.setItem("data", JSON.stringify(bookState));
+    }
   }, []);
   return (
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/">
-          <AllBooks />
-        </Route>
-        <Route path="/readinglist">
-          <ReadingList />
-        </Route>
-        <Route path="/details/:id">
-          <BookDetails />
-        </Route>
-        <Route path="/dashboard">
-          <main>
-            <h3>Welcome Back</h3>
-          </main>
-        </Route>
-        <Route path="/completedlist">
-          <CompletedList />
-        </Route>
+        <Route exact path="/" component={AllBooks} />
+        <Route path="/readinglist" component={ReadingList} />
+        <Route path="/details/:id" component={BookDetails} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/completedlist" component={CompletedList} />
       </Switch>
       <Footer />
     </Router>

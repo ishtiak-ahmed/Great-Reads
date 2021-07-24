@@ -6,7 +6,7 @@ export default function Footer() {
       <p>
         Developed by{" "}
         <a href="https://www.linkedin.com/in/ishtiak-ahmed-1606/">
-          Ishtik Ahmed
+          Ishtiak Ahmed
         </a>
       </p>
     </footer>

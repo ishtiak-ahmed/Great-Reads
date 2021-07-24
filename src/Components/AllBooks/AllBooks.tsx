@@ -10,9 +10,6 @@ export default function AllBooks() {
       {allBooks.map((book) => (
         <Book key={book.id} item={book} />
       ))}
-      {allBooks.map((book) => (
-        <Book key={book.id} item={book} />
-      ))}
     </main>
   );
 }
